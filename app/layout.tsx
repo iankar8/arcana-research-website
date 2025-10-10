@@ -16,6 +16,7 @@ const dmSerif = DM_Serif_Display({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://arcanaadvisors.com'),
   title: "Arcana Advisors — AI for Regulated Finance",
   description: "Custom agents, bank-grade evals, and compliant workflows—shipped fast, governed well.",
   openGraph: {

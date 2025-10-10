@@ -1,0 +1,184 @@
+# Arcana Advisors - AI for Regulated Finance
+
+> Custom agents, bank-grade evals, and compliant workflows—shipped fast, governed well.
+
+## About
+
+Research-backed AI implementation for banks. We stay on top of everything, test fast, and iterate faster than anyone else—so you deploy in weeks, not years.
+
+## Site Structure
+
+### Primary Pages
+
+- **Home** (`/`)
+  - Hero section with main value proposition
+  - AI impact statistics from major banks (JPMorgan, Bank of America, HSBC)
+  - Services overview for Risk/Fraud, Compliance, and Technology teams
+  - Use cases and research highlights
+  - Contact form and assessment booking
+
+- **Services** (`/services`)
+  - Detailed service offerings for three core teams:
+    - Risk & Fraud Teams: AI systems that cut false positives 20-90%
+    - Compliance & Legal: Model risk documentation and regulatory compliance
+    - Technology Teams: Integration with existing tech stacks
+
+- **Use Cases** (`/use-cases`)
+  - Fraud Detection: 20-90% false positive reduction (verified at JPMorgan, HSBC, DBS)
+  - AML Monitoring: 75% faster investigations
+  - KYC & Onboarding: Days to hours onboarding time
+  - Compliance Monitoring: 100% interaction coverage
+  - Credit Underwriting: Alternative data assessment
+
+- **Research** (`/research`)
+  - Quarterly reports on AI adoption in banking
+  - Open source data and methodology
+  - Peer-reviewed industry research
+  - Q1 2025: State of AI in Regional Banking survey
+
+- **Intelligence Briefing** (`/intelligence-briefing`)
+  - Weekly AI intelligence brief (2-3 pages)
+  - Monthly deep dive reports (10-15 pages)
+  - Quarterly live Q&A sessions
+  - Pricing: Individual ($1,000/mo), Team ($1,500/mo), Enterprise ($2,500/mo)
+
+- **Demo** (`/demo`)
+  - Interactive design system showcase
+  - Animation and UX pattern demonstrations
+
+## Key Statistics (Verified)
+
+### Operational Savings
+- **JPMorgan Chase COiN Platform**: 360,000 hours saved annually on legal document review
+- Processes 12,000 commercial credit agreements in seconds vs. months
+- Reduces contract analysis from 90+ minutes to under 30 minutes per document
+
+### Market Adoption
+- **91% of bank boards have officially endorsed generative AI projects**
+- Market urgency is real—AI adoption at the board level is now mainstream
+- Shows this is not experimental—it's a strategic priority
+
+### Customer Engagement
+- **Bank of America Erica**: 58 million interactions per month
+- 3 billion total client interactions since 2018
+- 50 million users served across all demographics
+- 98% accuracy rate in responding to customer queries
+
+### Fraud Detection
+- **HSBC Dynamic Risk Assessment**: 60% reduction in false positive alerts
+- 2-4x more financial crime detected than previous systems
+- **DBS Bank**: 90% reduction in false positives
+- 75% reduction in investigation times
+- **JPMorgan Chase**: 20% reduction in false positive cases for fraud detection
+
+### Industry Adoption
+- 91% of bank boards have officially endorsed generative AI projects
+- 90% of financial institutions use AI to expedite fraud investigations
+- 75% of banks with assets above $100 billion expected to fully integrate AI strategies by end of 2025
+
+## Services Overview
+
+### For Risk & Fraud Teams
+- AI systems that cut false positives 20-90% (verified at JPMorgan, HSBC, DBS)
+- Audit-ready from day one
+- Free up 8-12 analyst FTEs for complex cases
+- Deploy in 6-8 weeks, not 2 years
+
+### For Compliance & Legal
+- SR 11-7 compliant model risk documentation
+- Regulatory-ready explainability
+- Complete audit trails for every AI decision
+- Continuous validation in production
+
+### For Technology Teams
+- Works with existing tech stack
+- API-first integration approach
+- Data stays in client environment
+- No rip-and-replace required
+
+## Contact Information
+
+- **Website**: https://arcanaadvisors.com
+- **Email**: hello@arcanaadvisors.com
+- **Research**: research@arcanaadvisors.com
+- **Booking**: https://cal.com/arcana-advisors/intro
+
+## Technical Details
+
+- **Framework**: Next.js 14.2 (React 18)
+- **Styling**: Tailwind CSS with custom design system
+- **Typography**: Inter (sans-serif), DM Serif Display (serif)
+- **Color Scheme**: Black & Gold brand palette
+  - Gold: #C17F4A
+  - Background: #FAFAF9
+  - Text: #0A0A0A
+- **Animations**: Framer Motion with reduced motion support
+- **Accessibility**: WCAG AA compliant
+
+## Content Guidelines
+
+### Target Audience
+- Chief Risk Officers
+- Heads of Fraud Detection
+- AML/BSA Officers
+- CTO/CIO
+- Compliance Officers
+- Banking executives at regional and national institutions
+
+### Tone & Voice
+- Direct and technical
+- Evidence-based (all statistics cited)
+- No marketing fluff
+- Focus on measurable outcomes
+- Regulatory-aware
+
+### Key Themes
+1. **Speed**: Iterate faster than competitors
+2. **Compliance**: Audit-ready from day one
+3. **Integration**: No rip-and-replace
+4. **Evidence**: All claims backed by verified case studies
+5. **Pragmatism**: What works vs. what's trendy
+
+## Citations & Sources
+
+All statistics are sourced from:
+1. Official bank press releases (Bank of America, HSBC)
+2. Industry publications (Finance Alliance, Digital Defynd)
+3. Case studies from major financial institutions
+4. Verified implementations at JPMorgan Chase, HSBC, DBS Bank, Wells Fargo, Capital One
+
+Full citations with links available at: https://arcanaadvisors.com/#citations
+
+## Use Case Focus Areas
+
+1. **Fraud Detection**: Pattern recognition, anomaly detection, false positive reduction
+2. **AML Monitoring**: Suspicious activity reporting, transaction monitoring, typology detection
+3. **KYC & Onboarding**: Document validation, identity verification, customer screening
+4. **Compliance Monitoring**: Communication surveillance, policy violation detection
+5. **Third Party Risk**: Vendor monitoring, fintech risk assessment
+6. **Customer Communications**: Chatbots, virtual assistants, tier-1 query handling
+7. **Credit Underwriting**: Alternative data assessment, thin-file lending
+
+## Business Model
+
+- Technical assessments and consulting
+- AI implementation services
+- Weekly intelligence briefing subscription
+- Quarterly research reports
+- Custom analysis for enterprise clients
+
+## Differentiators
+
+1. **Banking-specific expertise**: Not general AI consulting
+2. **Regulatory compliance built-in**: SR 11-7, ECOA, FINRA-aware
+3. **Rapid iteration**: 6-8 week deployments vs. 18-24 month projects
+4. **Evidence-based**: All claims backed by verified case studies
+5. **Vendor-neutral research**: No sales agenda
+
+## Last Updated
+
+2025-10-10
+
+---
+
+This file helps LLMs understand Arcana Advisors' website structure, content, and value proposition for accurate information retrieval and question answering.

@@ -14,7 +14,7 @@ export default function Footer() {
       className="hairline py-12"
     >
       <div className="section-shell text-[14px] text-text-muted">
-        © 2025 Arcana Advisors — Authorized testing only; PII minimized and logged.
+        © 2025 Arcana Advisors — Production AI for regulated finance. Authorized testing only; PII minimized and logged.
       </div>
     </motion.footer>
   );

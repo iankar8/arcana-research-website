@@ -5,10 +5,31 @@
 :root {
   --font-inter: 'Inter', sans-serif;
   --font-dm-serif: 'DM Serif Display', serif;
-  --bg-light: #FAFAFA;
-  --text-strong: #111111;
-  --text-muted: #6F737A;
-  --accent: #3D66FF;
+  
+  /* Black & Gold Brand Palette */
+  --bg-light: #FAFAF9;
+  --bg-cream: #F5F5F4;
+  --bg-warm: #EFEEEC;
+  
+  --text-strong: #0A0A0A;
+  --text-muted: #525252;
+  --text-soft: #737373;
+  
+  --gold: #C17F4A;
+  --gold-light: #E8CDB5;
+  --gold-dark: #A8691F;
+  --gold-subtle: #F4E8DC;
+  
+  --accent: #C17F4A;
+  --accent-light: #E8CDB5;
+  --accent-subtle: #F4E8DC;
+  
+  --border-subtle: rgba(10, 10, 10, 0.08);
+  --border-gold: rgba(193, 127, 74, 0.2);
+  
+  --shadow-soft: 0 4px 24px rgba(10, 10, 10, 0.06);
+  --shadow-medium: 0 8px 32px rgba(10, 10, 10, 0.08);
+  --shadow-gold: 0 8px 32px rgba(193, 127, 74, 0.15);
 }
 
 @layer base {
@@ -31,18 +52,22 @@
   h3,
   h4 {
     font-family: var(--font-inter);
-    font-weight: 400;
-    letter-spacing: -0.02em;
+    font-weight: 500;
+    letter-spacing: -0.025em;
   }
 
   h1 {
-    font-size: clamp(2.5rem, 8vw, 5.5rem);
+    font-size: clamp(2.5rem, 8vw, 7rem);
     line-height: 1.05;
+    font-weight: 500;
+    letter-spacing: -0.03em;
   }
 
   h2 {
-    font-size: clamp(1.5rem, 3vw, 2.5rem);
-    line-height: 1.08;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 1.1;
+    font-weight: 500;
+    letter-spacing: -0.025em;
   }
 
   a {
@@ -79,25 +104,44 @@
   .kicker {
     font-family: var(--font-dm-serif);
     font-style: italic;
-    font-size: 0.95rem;
-    letter-spacing: -0.02em;
+    font-size: 1.125rem;
+    letter-spacing: -0.015em;
     line-height: 1;
-    color: var(--text-muted);
+    color: var(--gold);
     text-transform: none;
   }
 
   .hairline {
-    border-top: 0.5px solid rgba(17, 17, 17, 0.12);
+    border-top: 1px solid var(--border-subtle);
   }
 
   .hairline-bottom {
-    border-bottom: 0.5px solid rgba(17, 17, 17, 0.12);
+    border-bottom: 1px solid var(--border-subtle);
   }
 
   .section-shell {
-    max-width: 880px;
+    max-width: 920px;
     margin: 0 auto;
-    padding: 0 1.5rem;
+    padding: 0 1.25rem;
+  }
+
+  @media (min-width: 768px) {
+    .section-shell {
+      padding: 0 2rem;
+    }
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .warm-gradient {
+    background: linear-gradient(135deg, var(--bg-cream) 0%, var(--bg-warm) 100%);
   }
 
   .no-underline::after {
@@ -108,6 +152,15 @@
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+  
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
   }
 }
 

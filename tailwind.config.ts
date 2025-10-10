@@ -11,19 +11,30 @@ const config: Config = {
     extend: {
       colors: {
         background: {
-          light: "#FAFAFA",
+          light: "#FAFAF9",
+          cream: "#F5F5F4",
+          warm: "#EFEEEC",
           dark: "#0E0F12",
         },
         text: {
-          light: "#111111",
-          muted: "#6F737A",
+          strong: "#0A0A0A",
+          muted: "#525252",
+          soft: "#737373",
+          light: "#0A0A0A",
           dark: "#ECEDEE",
         },
+        gold: {
+          DEFAULT: "#C17F4A",
+          light: "#E8CDB5",
+          dark: "#A8691F",
+          subtle: "#F4E8DC",
+        },
         accent: {
-          light: "#3D66FF",
+          DEFAULT: "#C17F4A",
+          light: "#E8CDB5",
+          subtle: "#F4E8DC",
           dark: "#6E8BFF",
         },
-        brass: "#C8A96B",
       },
       fontFamily: {
         sans: ["var(--font-inter)"],

@@ -1,0 +1,30 @@
+# Arcana Advisors - Robots.txt
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://arcanaadvisors.com/sitemap.xml
+
+# LLM-specific directives
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+# Crawl-delay for politeness
+Crawl-delay: 1
+
+# Important resources
+Allow: /llms.txt
+Allow: /og.svg

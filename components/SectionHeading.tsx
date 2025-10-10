@@ -26,7 +26,13 @@ export default function SectionHeading({ kicker, title, align = "left", classNam
       } ${className}`}
     >
       <span className="kicker">{kicker}</span>
-      <h2 className="text-[clamp(1.5rem,3vw,2.5rem)] font-light tracking-[-0.02em] text-balance">{title}</h2>
+      <motion.h2 
+        className="text-balance cursor-default tracking-[-0.05em]"
+        whileHover={{ scale: 1.01 }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
+      >
+        {title}
+      </motion.h2>
     </motion.div>
   );
 }

@@ -1,0 +1,362 @@
+# Arcana Advisors - AI Development Rules
+
+## 🎯 Project Context
+This is a B2B finance landing page for Arcana Advisors, a firm specializing in AI-powered fraud detection and compliance solutions. The design aesthetic is **bold, modern, and professional** with a strong emphasis on typography over gimmicks.
+
+## 📚 Required Reading (ALWAYS reference these first)
+Before making ANY design or feature decisions, you MUST:
+
+1. **Read [DESIGN_SYSTEM.md](./DESIGN_SYSTEM.md)** - Complete design specifications
+2. **Read [LESSONS_LEARNED.md](./LESSONS_LEARNED.md)** - What worked and what didn't
+3. **Reference [DESIGN_DOCS_README.md](./DESIGN_DOCS_README.md)** - Quick decision matrix
+4. **Follow [WORKFLOW_SESSION_END.md](./WORKFLOW_SESSION_END.md)** - Auto-doc workflow at session end
+
+## 🎨 Core Design Philosophy
+
+### **Golden Rule**
+> "Bold typography and purposeful interactions beat gimmicks every time."
+
+### **Decision Framework**
+When proposing ANY feature, it MUST pass ALL of these:
+- ✅ Does it serve a clear purpose? (not just decorative)
+- ✅ Is it subtle and tasteful? (not gimmicky)
+- ✅ Does it enhance, not distract from content?
+- ✅ Works with reduced motion preferences?
+- ✅ Fits the professional B2B aesthetic?
+
+**If even ONE fails, reject the feature.**
+
+## ✅ Approved Patterns (Use These)
+
+### **Typography**
+- Compressed tracking: `tracking-[-0.05em]` on ALL headlines
+- Font weights: 400 (body), 600 (emphasis), 900 (headlines)
+- Max-width: 60-68ch for readability
+
+### **Interactive Elements**
+- Magnetic buttons (0.2x multiplier, spring physics)
+- Hover scale headlines (1.01x, 300ms)
+- Animated stat counters (1500ms duration)
+- Sticky section indicators (right side, desktop only)
+- Mouse spotlight (600px, 4% opacity)
+- Aggressive parallax (±150px movement)
+- Horizontal drag scroll (4-6 items)
+
+### **Visual Effects**
+- Section numbers (15% opacity, 3 sections max)
+- Noise texture (2.5% opacity, Hero only)
+- Text reveal (ONE paragraph only - WhyNow section)
+
+### **Colors**
+- Background: #FAFAF9 (never pure white)
+- Text: #0A0A0A (strong), #525252 (muted), #737373 (soft)
+- Accent: #C17F4A (gold - use sparingly)
+
+## ❌ REJECTED Patterns (Never Suggest These)
+
+- ❌ Custom cursor (accessibility issues)
+- ❌ Marquee scrolling text (distracting)
+- ❌ Alternating section offsets (no clear purpose)
+- ❌ Text reveal on multiple sections (gimmicky)
+- ❌ Section numbers everywhere (overuse)
+- ❌ Pure white backgrounds (use beige)
+- ❌ Hover effects over 1.05x scale (too aggressive)
+
+## 🔧 Technical Standards
+
+### **Animation Library**
+- Use Framer Motion for all animations
+- ALWAYS check `useReducedMotion()` and respect it
+- Use `viewport={{ once: true }}` for scroll triggers
+- Spring physics: `stiffness: 200, damping: 20`
+
+### **Component Structure**
+```tsx
+// ALWAYS use this pattern:
+"use client";  // At top of interactive components
+
+import { motion, useReducedMotion } from "framer-motion";
+
+export default function Component() {
+  const shouldReduceMotion = useReducedMotion();
+  
+  // Conditional animations based on reduced motion
+  return (
+    <motion.div
+      initial={shouldReduceMotion ? {} : { opacity: 0 }}
+      animate={{ opacity: 1 }}
+    >
+  );
+}
+```
+
+### **Performance Rules**
+- Use `useMemo` for expensive calculations
+- Animate `transform` and `opacity` only (GPU accelerated)
+- Use Intersection Observer, not scroll listeners
+- Test on mid-range devices, not just high-end
+
+### **Accessibility (NON-NEGOTIABLE)**
+- All animations must respect reduced motion
+- All interactive elements must be keyboard accessible
+- Focus indicators: `ring-2 ring-gold ring-offset-2`
+- Decorative elements: `aria-hidden="true"`
+- Color alone never conveys information
+
+## 🚀 Development Workflow
+
+### **Before Implementing ANY Feature**
+
+1. **Check if it exists in DESIGN_SYSTEM.md**
+   - If yes: Follow the exact specification
+   - If no: Propose it and get approval first
+
+2. **Check if it was tried in LESSONS_LEARNED.md**
+   - Learn from past successes/failures
+   - Don't repeat rejected patterns
+
+3. **Build on /demo first**
+   - Test in isolation before applying to main site
+   - Get feedback, iterate quickly
+   - Only apply to main after approval
+
+4. **Apply selectively**
+   - Less is more - features are impactful when rare
+   - Don't overuse successful patterns
+   - Quality over quantity
+
+### **When Proposing New Features**
+
+ALWAYS provide:
+1. **Purpose** - Why does this exist?
+2. **Specifications** - Exact implementation details
+3. **Usage rules** - When to use, when NOT to use
+4. **Alternatives considered** - What else was evaluated?
+5. **Decision matrix** - Pass all 5 questions above
+
+## 📝 Code Style
+
+### **File Organization**
+```
+/components        - Reusable UI components
+/components/ui     - Base UI primitives (Button, etc.)
+/app              - Next.js pages
+/lib              - Utilities, helpers
+```
+
+### **Component Naming**
+- PascalCase for components: `SectionNumber.tsx`
+- camelCase for utilities: `analytics.ts`
+- Descriptive names: `ScrambleText` not `TextEffect`
+
+### **Import Order**
+```tsx
+// 1. React/Next
+import { useState } from "react";
+
+// 2. External libraries
+import { motion } from "framer-motion";
+
+// 3. Internal components
+import Button from "./ui/Button";
+
+// 4. Types
+import type { ComponentProps } from "./types";
+```
+
+## 🎯 Common Tasks
+
+### **Adding a New Section**
+
+```tsx
+<section id="section-id" className="relative py-40 overflow-hidden">
+  {/* Optional: Section number (max 3-4 per page) */}
+  <SectionNumber number="01" />
+  
+  {/* Optional: Noise texture */}
+  <NoiseTexture opacity={0.025} />
+  
+  {/* Background decorations (z-0) */}
+  <motion.div className="absolute ... z-0" aria-hidden="true">
+    <Icon className="w-24 h-24 text-gold" strokeWidth={1} />
+  </motion.div>
+  
+  {/* Main content (z-10) */}
+  <div className="section-shell relative z-10">
+    <SectionHeading kicker="Label—" title="Title" />
+    {/* Your content */}
+  </div>
+</section>
+```
+
+### **Adding Hover Effects**
+
+```tsx
+// Headlines: Subtle scale
+<motion.h2
+  whileHover={{ scale: 1.01 }}
+  transition={{ duration: 0.3, ease: "easeOut" }}
+  className="cursor-default"
+>
+
+// Cards: Scale + lift
+<motion.div
+  whileHover={{ scale: 1.02, y: -8 }}
+  transition={{ duration: 0.3 }}
+>
+```
+
+### **Adding Parallax**
+
+```tsx
+const sectionRef = useRef<HTMLElement>(null);
+const { scrollYProgress } = useScroll({
+  target: sectionRef,
+  offset: ["start start", "end start"]
+});
+
+const y = useTransform(scrollYProgress, [0, 1], [0, shouldReduceMotion ? 0 : -150]);
+
+// Apply to background elements only
+<motion.div style={{ y }} className="absolute ...">
+```
+
+## 🧪 Testing Requirements
+
+Before marking ANY feature complete, verify:
+
+- [ ] Works with reduced motion enabled
+- [ ] Keyboard navigation functional
+- [ ] Mobile responsive (test at 375px)
+- [ ] Desktop looks good (test at 1920px)
+- [ ] Smooth 60fps on mid-range devices
+- [ ] No console errors or warnings
+- [ ] Follows DESIGN_SYSTEM.md specifications
+- [ ] Doesn't violate LESSONS_LEARNED.md principles
+
+## 💬 Communication Style
+
+When working with the human:
+
+### **DO:**
+- ✅ Reference specific docs when making suggestions
+- ✅ Explain WHY a pattern fits the aesthetic
+- ✅ Propose alternatives if something doesn't fit
+- ✅ Show examples from existing code
+- ✅ Be direct about what won't work and why
+
+### **DON'T:**
+- ❌ Suggest patterns without checking docs first
+- ❌ Propose features that failed before (check LESSONS_LEARNED.md)
+- ❌ Ignore the "Bold, Not Gimmicky" philosophy
+- ❌ Over-engineer simple solutions
+- ❌ Suggest without implementation details
+
+## 🎓 Learning from Feedback
+
+When the human provides feedback:
+
+1. **Document the decision** - Update LESSONS_LEARNED.md if significant
+2. **Update patterns** - Add to DESIGN_SYSTEM.md if reusable
+3. **Create examples** - Add to /demo for future reference
+4. **Cross-reference** - Link related decisions across docs
+
+## 🔄 Keeping AI Context Fresh
+
+### **When to Update Docs**
+
+IMMEDIATELY update when:
+- New feature approved/implemented → DESIGN_SYSTEM.md
+- Feature rejected with reasoning → LESSONS_LEARNED.md
+- Design philosophy evolves → Both docs
+- New pattern established → DESIGN_SYSTEM.md
+- Technical decision made → LESSONS_LEARNED.md
+
+### **How to Update**
+
+1. Read existing section first
+2. Add new information with context
+3. Include code examples
+4. Cross-reference related decisions
+5. Update timestamps
+
+## 🎯 Success Metrics
+
+You're doing well when:
+- ✅ Features are approved on first proposal (followed patterns)
+- ✅ No "that's too gimmicky" feedback (tasteful suggestions)
+- ✅ Quick iterations (understood requirements)
+- ✅ Consistent quality (referenced docs)
+- ✅ Proactive suggestions (internalized aesthetic)
+
+## 🚨 Red Flags
+
+Stop and reconsider if:
+- 🚩 Proposing features not in DESIGN_SYSTEM.md without approval
+- 🚩 Suggesting patterns from the REJECTED list
+- 🚩 Not checking reduced motion
+- 🚩 Ignoring accessibility requirements
+- 🚩 Making it "fancy" instead of "purposeful"
+- 🚩 Over-animating or over-designing
+
+## 🔄 Session-End Documentation Workflow
+
+**CRITICAL:** At the end of EVERY work session, follow [WORKFLOW_SESSION_END.md](./WORKFLOW_SESSION_END.md)
+
+### **Detect Session End**
+Watch for these signals:
+- Positive conclusions: "ok cool", "perfect", "awesome", "looks good", "thanks"
+- Explicit wrap-ups: "that's all", "done for today", "let's stop here"
+- Natural pauses after feature completion
+
+### **When Detected, PROACTIVELY Prompt:**
+
+```
+🤖 Before we wrap up, let's update the docs:
+
+📊 This Session Summary:
+[List 3-5 key accomplishments]
+
+💡 Key Decisions Made:
+[List approvals/rejections/learnings]
+
+📝 Doc Updates Needed:
+• DESIGN_SYSTEM.md: [if new patterns/components]
+• LESSONS_LEARNED.md: [if decisions/learnings]
+
+Want me to draft these updates now? [y/n]
+```
+
+### **If User Says YES:**
+1. Draft exact markdown updates (complete sections, not summaries)
+2. Use Edit/MultiEdit tools to apply changes
+3. Suggest git commit message (code + docs together)
+4. Offer to commit: "Commit now? [y/n]"
+
+### **Make It:**
+- ✅ QUICK (< 2 min total)
+- ✅ ACTIONABLE (one-click approval)
+- ✅ OPTIONAL (can skip)
+- ✅ ACCURATE (based on actual conversation)
+
+**DON'T** wait to be asked. This is a REQUIRED part of every session.
+
+---
+
+## 📌 Remember
+
+> "The best interactive elements are the ones users don't consciously notice but subconsciously appreciate."
+
+Every feature should make the user say:
+- "This feels premium"
+- "This is easy to use"
+- "This is professional"
+
+NOT:
+- "That's a cool effect!" (gimmick alert)
+- "What was that?" (too distracting)
+- "Why did it do that?" (confusing)
+
+---
+
+**Bottom Line:** Be bold with typography. Be subtle with interactions. Be purposeful with everything.

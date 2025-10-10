@@ -3,15 +3,19 @@
 import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { track } from "@/lib/analytics";
+import { Menu } from "lucide-react";
+import MobileMenu from "./MobileMenu";
 
 const links = [
-  { href: "#services", label: "Services" },
-  { href: "#research", label: "Research" },
+  { href: "/services", label: "Services" },
+  { href: "/research", label: "Research" },
+  { href: "/intelligence-briefing", label: "Intelligence" },
   { href: "#contact", label: "Contact" },
 ];
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
@@ -36,7 +40,8 @@ export default function Header() {
       <div className="section-shell flex items-center justify-between py-6">
         <div className="text-[18px] tracking-tight uppercase">Arcana Advisors</div>
 
-        <nav className="flex items-center gap-6 text-[13px] uppercase tracking-[0.12em] text-text-muted">
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center gap-6 text-[14px] uppercase tracking-[0.12em] text-text-muted">
           {links.map((link) => (
             <a
               key={link.href}
@@ -48,7 +53,23 @@ export default function Header() {
             </a>
           ))}
         </nav>
+
+        {/* Mobile Menu Button */}
+        <button
+          onClick={() => setIsMobileMenuOpen(true)}
+          className="md:hidden p-2 -mr-2 text-text-muted hover:text-text-strong transition-colors"
+          aria-label="Open menu"
+        >
+          <Menu className="w-6 h-6" />
+        </button>
       </div>
+
+      {/* Mobile Menu */}
+      <MobileMenu
+        isOpen={isMobileMenuOpen}
+        onClose={() => setIsMobileMenuOpen(false)}
+        links={links}
+      />
 
       <div className="hairline-bottom" />
     </motion.header>
