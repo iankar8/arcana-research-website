@@ -9,19 +9,19 @@ const offerings = [
   {
     title: "For Individuals",
     description:
-      "Get smarter about AI in banking. Learn how to use AI tools effectively in your daily work and stay ahead of industry developments.",
+      "Build strategic fluency in AI-driven banking. Access proprietary research, industry intelligence, and frameworks to navigate the evolving landscape with confidence.",
     icon: Brain,
   },
   {
     title: "For Teams",
     description:
-      "Run product sprints and experimentation cycles with us. We help you quickly test AI ideas, iterate on what works, and build momentum.",
+      "Accelerate innovation through structured experimentation. Deploy rapid-cycle testing frameworks to validate AI use cases and build organizational momentum.",
     icon: Zap,
   },
   {
     title: "For Organizations",
     description:
-      "High-level AI strategy and exploration. From building your own models to AI investment decisions—we help you think through the big moves.",
+      "Drive enterprise-wide AI transformation. From proprietary model development to operational excellence—we architect strategic initiatives that deliver sustainable competitive advantage.",
     icon: CheckCircle,
   },
 ];
@@ -68,12 +68,13 @@ export default function Services() {
         <SectionHeading kicker="Who We Serve—" title="Built for everyone" />
 
         <motion.p
+          initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 12 }}
           whileInView={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
           className="max-w-[68ch] text-xl leading-relaxed text-text-muted"
         >
-          Whether you're learning individually, running experiments as a team, or making strategic decisions for your organization—we meet you where you are.
+          Whether building individual capability, enabling team-level innovation, or driving enterprise transformation—our engagement model scales to your organizational maturity and strategic priorities.
         </motion.p>
 
         <motion.div

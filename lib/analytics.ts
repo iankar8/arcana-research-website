@@ -17,7 +17,8 @@ export type AnalyticsEvent =
   | "read_note"
   | "form_submit"
   | "briefing_sample_request"
-  | "research_signup";
+  | "research_signup"
+  | "coming_soon_signup";
 
 export function track(event: AnalyticsEvent, detail: Record<string, unknown> = {}) {
   if (typeof window === "undefined") return;

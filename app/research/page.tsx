@@ -38,7 +38,7 @@ export default function ResearchPage() {
                 Independent AI research for banking
               </h1>
               <p className="text-xl lg:text-2xl leading-relaxed text-text-muted font-normal">
-                Quarterly reports on AI adoption, vendor landscape, and what actually works—published open source with peer review.
+                Rigorous quarterly analyses of AI adoption trends, vendor ecosystems, and validated implementation frameworks—published open source with independent peer review.
               </p>
             </motion.div>
 
@@ -76,7 +76,7 @@ export default function ResearchPage() {
               <div className="space-y-3">
                 <h2 className="text-2xl font-bold text-text-strong">Q1 2025: State of AI in Regional Banking</h2>
                 <p className="text-base leading-relaxed text-text-muted">
-                  We're surveying 200+ banking professionals to understand AI adoption patterns, barriers, and budgets. Results published February 2025.
+                  Primary research across 200+ banking professionals examining AI adoption trajectories, implementation barriers, and capital allocation strategies. Comprehensive findings published February 2025.
                 </p>
               </div>
 
@@ -105,27 +105,45 @@ export default function ResearchPage() {
               ) : (
                 <div className="flex items-center gap-3 text-gold">
                   <div className="w-2 h-2 bg-gold rounded-full" />
-                  <p className="text-base font-medium">Thanks! We'll email you when the report is published.</p>
+                  <p className="text-base font-medium">Confirmed. You will receive notification upon publication.</p>
                 </div>
               )}
             </motion.div>
 
-            {/* Participate */}
+            {/* Participate - Free Membership Funnel */}
             <motion.div
               initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="space-y-6"
+              className="border-l-4 border-gold bg-gold/5 pl-8 pr-8 py-8 space-y-6"
             >
-              <h3 className="text-xl font-bold text-text-strong">Want to participate?</h3>
+              <h3 className="text-2xl font-bold text-text-strong">Research panel—complimentary membership</h3>
               <p className="text-base leading-relaxed text-text-muted">
-                We're looking for banking professionals to participate in our Q1 survey. Takes 5 minutes, and you'll get early access to the full report.
+                We seek banking professionals to contribute to our ongoing research initiatives. Panel members receive complimentary access to our monthly intelligence briefing and advance access to all research publications.
               </p>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3 text-base text-text-muted">
+                  <div className="flex-shrink-0 w-1.5 h-1.5 bg-gold mt-2.5" />
+                  <span>Quarterly research surveys (5-10 minutes)</span>
+                </li>
+                <li className="flex items-start gap-3 text-base text-text-muted">
+                  <div className="flex-shrink-0 w-1.5 h-1.5 bg-gold mt-2.5" />
+                  <span>Optional qualitative interviews for in-depth insights</span>
+                </li>
+                <li className="flex items-start gap-3 text-base text-text-muted">
+                  <div className="flex-shrink-0 w-1.5 h-1.5 bg-gold mt-2.5" />
+                  <span>Data confidentiality maintained with optional attribution</span>
+                </li>
+                <li className="flex items-start gap-3 text-base text-text-muted">
+                  <div className="flex-shrink-0 w-1.5 h-1.5 bg-gold mt-2.5" />
+                  <span><strong className="text-gold">Complimentary Individual membership</strong> to our intelligence briefing ($10K annual value)</span>
+                </li>
+              </ul>
               <Button
-                variant="secondary"
+                variant="primary"
                 onClick={() => {
                   track("cta_participate_survey", { source: "research_page" });
-                  window.location.href = "mailto:research@arcanaadvisors.com?subject=Q1 Survey Participation";
+                  window.location.href = "mailto:research@arcanaadvisors.com?subject=Join Research Panel - Free Membership";
                 }}
               >
                 Join Research Panel

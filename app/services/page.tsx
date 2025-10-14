@@ -4,46 +4,46 @@ import { motion, useReducedMotion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Button from "@/components/ui/Button";
-import { Shield, Code, FileCheck } from "lucide-react";
+import { User, Users, Building2, Target } from "lucide-react";
 import { track } from "@/lib/analytics";
 
 const BOOK_LINK = "https://cal.com/arcana-advisors/intro";
 
-const services = [
+const engagementLevels = [
   {
-    icon: Shield,
-    title: "For Risk & Fraud Teams",
+    icon: User,
+    title: "For Individuals",
     description:
-      "AI systems that cut false positives 20-90% (verified at JPMorgan, HSBC, DBS) while catching more fraud. Audit-ready from day one.",
+      "Develop strategic fluency in AI-enabled banking. Access proprietary research, regulatory intelligence, and best-practice frameworks to navigate the evolving landscape and drive informed decision-making.",
     details: [
-      "Save 360K+ hours annually like JPMorgan COiN",
-      "Reduce false positives by 60-90% like HSBC & DBS",
-      "Free up 8-12 analyst FTEs for complex cases",
-      "Explainable decisions with full audit trails",
+      "Weekly intelligence briefs tailored to banking",
+      "Access to our research library and case studies",
+      "Monthly deep dives on vendors and implementations",
+      "Join our research panel and influence our work",
     ],
   },
   {
-    icon: FileCheck,
-    title: "For Compliance & Legal",
+    icon: Users,
+    title: "For Teams",
     description:
-      "Model risk documentation, explainable decisions, and regulatory compliance built into every deployment.",
+      "Accelerate innovation velocity through structured experimentation frameworks. We enable rapid-cycle validation of AI use cases, facilitating iterative refinement and organizational learning without protracted analysis cycles.",
     details: [
-      "SR 11-7 compliant model risk documentation",
-      "Complete audit trails for every AI decision",
-      "Regulatory-ready explainability",
-      "Continuous validation in production",
+      "Everything in Individual, plus team access",
+      "Guided experimentation frameworks",
+      "Vendor evaluation and due diligence",
+      "Quarterly strategy sessions",
     ],
   },
   {
-    icon: Code,
-    title: "For Technology Teams",
+    icon: Building2,
+    title: "For Organizations",
     description:
-      "Integrates with your existing stack. No rip-and-replace. We work with your codebase and processes.",
+      "Architect enterprise-scale AI transformation initiatives. From proprietary model development to strategic investment decisions—we design comprehensive programs that deliver sustainable competitive advantage and measurable business impact.",
     details: [
-      "Works with your existing tech stack",
-      "API-first integration approach",
-      "Your data stays in your environment",
-      "Defined scope and timeline from day one",
+      "Everything in Team, plus org-wide access",
+      "Custom analysis and strategic planning",
+      "Executive briefings and board presentations",
+      "Dedicated advisor and priority support",
     ],
   },
 ];
@@ -66,38 +66,57 @@ export default function ServicesPage() {
               className="space-y-6"
             >
               <h1 className="text-[clamp(2.5rem,6vw,5rem)] font-black uppercase leading-[0.9] tracking-tight text-text-strong">
-                Built for your entire team
+                How we engage with you
               </h1>
               <p className="text-xl lg:text-2xl leading-relaxed text-text-muted font-normal">
-                AI implementation that speaks to every stakeholder in the buying process.
+                Tailored engagement models designed to match your organizational maturity—from individual capability building to enterprise-wide transformation.
               </p>
             </motion.div>
 
-            {/* Services */}
+            {/* Why We're Doing This */}
+            <motion.div
+              initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="border-l-4 border-gold bg-gold/5 pl-8 pr-8 py-8 space-y-4"
+            >
+              <div className="flex items-center gap-3">
+                <Target className="w-8 h-8 text-gold" strokeWidth={2} />
+                <h2 className="text-2xl font-bold text-text-strong">Why this matters now</h2>
+              </div>
+              <p className="text-lg leading-relaxed text-text-muted">
+                AI has emerged as a strategic imperative in banking. However, our research reveals a significant implementation gap—organizations struggle to translate AI potential into measurable business value. The landscape remains largely unexplored beyond reactive deployments.
+              </p>
+              <p className="text-lg leading-relaxed text-text-muted">
+                While most institutions adopt defensive postures—responding to regulatory pressures, competitive threats, and vendor offerings—significant value creation opportunities remain untapped. We enable organizations to shift from reactive compliance to proactive value capture through strategic AI initiatives that drive competitive differentiation and operational excellence.
+              </p>
+            </motion.div>
+
+            {/* Engagement Levels */}
             <div className="space-y-16">
-              {services.map((service, index) => {
-                const Icon = service.icon;
+              {engagementLevels.map((level, index) => {
+                const Icon = level.icon;
                 return (
                   <motion.div
-                    key={service.title}
+                    key={level.title}
                     initial={shouldReduceMotion ? {} : { opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: index * 0.2 }}
+                    transition={{ duration: 0.6, delay: 0.4 + index * 0.15 }}
                     className="border-l-4 border-gold bg-gold/5 pl-8 pr-8 py-8 space-y-6"
                   >
                     <div className="flex items-center gap-4">
                       <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-gold/20">
                         <Icon className="w-6 h-6 text-gold" strokeWidth={2} />
                       </div>
-                      <h2 className="text-2xl font-bold text-text-strong">{service.title}</h2>
+                      <h3 className="text-2xl font-bold text-text-strong">{level.title}</h3>
                     </div>
 
                     <p className="text-lg leading-relaxed text-text-muted">
-                      {service.description}
+                      {level.description}
                     </p>
 
                     <ul className="space-y-3">
-                      {service.details.map((detail) => (
+                      {level.details.map((detail) => (
                         <li key={detail} className="flex items-start gap-3 text-base text-text-muted">
                           <div className="flex-shrink-0 w-1.5 h-1.5 bg-gold mt-2.5" />
                           <span>{detail}</span>
@@ -113,17 +132,17 @@ export default function ServicesPage() {
             <motion.div
               initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
+              transition={{ duration: 0.6, delay: 1.2 }}
               className="flex flex-col items-center gap-6 pt-8"
             >
               <Button
                 variant="primary"
                 onClick={() => {
-                  track("cta_book_assessment", { source: "services_page" });
+                  track("cta_book_intro", { source: "services_page" });
                   window.open(BOOK_LINK, "_blank", "noopener,noreferrer");
                 }}
               >
-                Book Assessment
+                Book Intro Call
               </Button>
               <a
                 href="/"

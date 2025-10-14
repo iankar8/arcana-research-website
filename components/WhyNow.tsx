@@ -91,7 +91,7 @@ export default function WhyNow() {
           viewport={{ once: true, margin: "-80px" }}
           className="max-w-[68ch] text-[22px] leading-[1.65] text-text-muted font-normal"
         >
-          Banking AI is evolving fast. We stay on top of everything, try things quickly, and share what we're learning—so you don't waste 18 months chasing the wrong ideas.
+          Big banks are moving full speed ahead into AI—devoting billions of dollars and thousands of engineers. And they're already seeing results.
         </motion.p>
 
         <div className="grid gap-8 sm:gap-10 md:gap-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-16 sm:mt-24 md:mt-32">

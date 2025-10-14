@@ -1,10 +1,9 @@
 "use client";
 
 import { track } from "@/lib/analytics";
-import { motion, useReducedMotion, LayoutGroup, useScroll, useTransform } from "framer-motion";
+import { motion, useReducedMotion, LayoutGroup } from "framer-motion";
 import Button from "./ui/Button";
 import { useState, useMemo, useRef } from "react";
-import { Brain, CheckCircle, AlertTriangle, Eye, Zap } from "lucide-react";
 import NoiseTexture from "./NoiseTexture";
 
 const BOOK_LINK = "https://cal.com/arcana-advisors/intro";
@@ -13,16 +12,6 @@ export default function Hero() {
   const shouldReduceMotion = useReducedMotion();
   const [hoveredWord, setHoveredWord] = useState<number | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
-
-  // Parallax scroll
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end start"]
-  });
-  
-  const y1 = useTransform(scrollYProgress, [0, 1], [0, shouldReduceMotion ? 0 : -150]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, shouldReduceMotion ? 0 : 150]);
-  const y3 = useTransform(scrollYProgress, [0, 1], [0, shouldReduceMotion ? 0 : -100]);
 
   // Pre-calculate indices for performance
   const wordsWithIndices = useMemo(() => [
@@ -44,67 +33,6 @@ export default function Hero() {
       className="relative min-h-[85vh] md:min-h-screen flex items-center py-20 sm:py-24 md:py-32 overflow-hidden"
     >
       <NoiseTexture opacity={0.025} />
-      {/* Floating icons with parallax */}
-      
-      {/* Brain - Top Right (parallax down) */}
-      <motion.div
-        aria-hidden="true"
-        style={{ y: y2 }}
-        initial={{ opacity: 0, rotate: -15 }}
-        animate={shouldReduceMotion ? { opacity: 0.15 } : { opacity: 0.2, rotate: [-15, 15, -15] }}
-        transition={shouldReduceMotion ? { duration: 0 } : { duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[8%] right-[6%] md:top-[10%] md:right-[8%] lg:top-[15%] lg:right-[12%] z-0"
-      >
-        <Brain className="w-9 h-9 md:w-12 md:h-12 lg:w-16 lg:h-16 text-gold" strokeWidth={1.5} />
-      </motion.div>
-
-      {/* Eye - Top Left (parallax up) */}
-      <motion.div
-        aria-hidden="true"
-        style={{ y: y1 }}
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={shouldReduceMotion ? { opacity: 0.15 } : { opacity: 0.2, scale: [0.8, 1.1, 0.8] }}
-        transition={shouldReduceMotion ? { duration: 0 } : { duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[22%] left-[4%] md:left-[5%] lg:left-[8%] z-0"
-      >
-        <Eye className="w-8 h-8 md:w-10 md:h-10 lg:w-14 lg:h-14 text-gold" strokeWidth={1.5} />
-      </motion.div>
-
-      {/* Zap - Middle Right (parallax down, different speed) */}
-      <motion.div
-        aria-hidden="true"
-        style={{ y: y3 }}
-        initial={{ opacity: 0, y: 0 }}
-        animate={shouldReduceMotion ? { opacity: 0.15 } : { opacity: 0.2 }}
-        transition={shouldReduceMotion ? { duration: 0 } : { duration: 5, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[52%] right-[4%] md:right-[5%] lg:right-[10%] z-0"
-      >
-        <Zap className="w-9 h-9 md:w-11 md:h-11 lg:w-14 lg:h-14 text-gold" strokeWidth={1.5} fill="currentColor" />
-      </motion.div>
-
-      {/* AlertTriangle - Bottom Left (parallax up) */}
-      <motion.div
-        aria-hidden="true"
-        style={{ y: y1 }}
-        initial={{ opacity: 0, rotate: 0 }}
-        animate={shouldReduceMotion ? { opacity: 0.15 } : { opacity: 0.2, rotate: [0, 10, -10, 0] }}
-        transition={shouldReduceMotion ? { duration: 0 } : { duration: 7, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-[18%] left-[6%] md:left-[8%] lg:left-[12%] z-0"
-      >
-        <AlertTriangle className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 text-gold" strokeWidth={1.5} />
-      </motion.div>
-
-      {/* CheckCircle - Bottom Right (parallax down) */}
-      <motion.div
-        aria-hidden="true"
-        style={{ y: y2 }}
-        initial={{ opacity: 0, rotate: 0 }}
-        animate={shouldReduceMotion ? { opacity: 0.15 } : { opacity: 0.2, rotate: 360 }}
-        transition={shouldReduceMotion ? { duration: 0 } : { duration: 20, repeat: Infinity, ease: "linear" }}
-        className="absolute bottom-[32%] right-[12%] md:right-[15%] lg:right-[20%] z-0"
-      >
-        <CheckCircle className="w-7 h-7 md:w-9 md:h-9 lg:w-11 lg:h-11 text-gold" strokeWidth={1.5} />
-      </motion.div>
 
       <div className="section-shell relative z-10">
         <div className="max-w-[90rem] mx-auto space-y-16">
@@ -164,7 +92,7 @@ export default function Hero() {
             className="max-w-[70ch] space-y-6"
           >
             <p className="text-xl lg:text-2xl leading-relaxed text-text-muted font-normal">
-              Research-backed AI implementation for banks. We stay on top of everything, test fast, and iterate faster than anyone else—so you deploy in weeks, not years.
+              Learn, strategize, experiment, and roll out AI projects fast and compliantly. Our team helps you every step along the way: from integrating AI into your daily workflow to helping test and launch new features for your team and customers.
             </p>
           </motion.div>
 
@@ -179,7 +107,7 @@ export default function Hero() {
               variant="primary"
               onClick={() => {
                 track("cta_contact", { source: "hero" });
-                document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+                window.location.href = "mailto:ian@iankar.com?subject=AI%20Implementation%20Inquiry&body=Hi%20Ian%2C%0A%0AI'm%20interested%20in%20discussing%20AI%20implementation%20for%20our%20organization.%0A%0AHere%20are%20some%20times%20that%20work%20for%20me%3A%0A-%20%5BYour%20available%20time%201%5D%0A-%20%5BYour%20available%20time%202%5D%0A-%20%5BYour%20available%20time%203%5D%0A%0AAlternatively%2C%20you%20can%20book%20directly%3A%20https%3A%2F%2Fcal.com%2Farcana-advisors%2Fintro%0A%0AName%3A%20%0AOrganization%3A%20%0ARole%3A%20%0A%0ABest%2C";
               }}
             >
               Get Started

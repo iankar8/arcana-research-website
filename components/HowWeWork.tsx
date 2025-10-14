@@ -8,23 +8,23 @@ import SectionNumber from "./SectionNumber";
 const principles = [
   {
     icon: CheckCircle,
-    title: "Easy to work with",
-    description: "We navigate your security processes and compliance requirements—you focus on the work",
+    title: "Institutional fluency",
+    description: "We navigate complex security and compliance frameworks—enabling you to focus on strategic execution",
   },
   {
     icon: FileCheck,
-    title: "Clear deliverables",
-    description: "Every engagement has defined outputs and end dates—no endless consulting",
+    title: "Defined deliverables",
+    description: "Every engagement features explicit outputs and completion criteria—no open-ended consulting arrangements",
   },
   {
     icon: Code,
-    title: "Hands-on, not hands-off",
-    description: "We work alongside your team, not just send reports from a distance",
+    title: "Embedded approach",
+    description: "We integrate with your teams directly—not remote report generation",
   },
   {
     icon: Users,
-    title: "Fixed timelines",
-    description: "Sprints measured in weeks, not years—nothing drags on",
+    title: "Time-boxed delivery",
+    description: "Sprint-based execution measured in weeks—not protracted multi-year initiatives",
   },
 ];
 
@@ -45,7 +45,7 @@ export default function HowWeWork() {
           transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
           className="max-w-[68ch] text-lg leading-relaxed text-text-muted"
         >
-          Banks have tight security processes and procurement requirements. We make it easy to work within those constraints while still moving quickly.
+          We navigate complex regulatory and security environments inherent to financial services. Our engagement model balances institutional requirements with velocity—delivering structured, time-boxed initiatives with defined milestones and measurable outcomes.
         </motion.p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">

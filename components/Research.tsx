@@ -146,22 +146,14 @@ const useCases = [
 
 export default function Research() {
   const shouldReduceMotion = useReducedMotion();
-  const [activeTab, setActiveTab] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  const handleTabChange = (index: number) => {
-    setActiveTab(index);
-    track("sector_tab_click", { sector: useCases[index].title });
+  const handleUseCaseClick = (index: number) => {
+    setActiveIndex(index);
+    track("use_case_click", { useCase: useCases[index].title });
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent, index: number) => {
-    if (e.key === "ArrowRight" && index < useCases.length - 1) {
-      setActiveTab(index + 1);
-    } else if (e.key === "ArrowLeft" && index > 0) {
-      setActiveTab(index - 1);
-    }
-  };
-
-  const activeCase = useCases[activeTab];
+  const activeCase = useCases[activeIndex];
   const Icon = activeCase.icon;
 
   return (
@@ -179,44 +171,166 @@ export default function Research() {
           transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
           className="max-w-[68ch] text-xl leading-relaxed text-text-muted"
         >
-          Banking teams ask us to explore what AI can actually do across fraud detection, AML monitoring, KYC, compliance, and credit underwriting. We stay on top of the latest approaches, test them safely, and share what proves out.
+          Validated AI applications across critical banking functions—from fraud detection to credit underwriting. We conduct rigorous research, validate business impact, and enable scalable implementation of proven methodologies.
         </motion.p>
 
+        {/* Mobile Dropdown Selector (visible on small screens) */}
         <motion.div
           initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 12 }}
           whileInView={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.45, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6"
+          className="lg:hidden mb-8"
         >
-          {useCases.slice(0, 5).map((useCase) => {
-            const Icon = useCase.icon;
-            return (
-              <div key={useCase.id} className="flex flex-col items-center gap-3 text-center">
-                <div className="flex items-center justify-center w-16 h-16 rounded-2xl bg-gold/10">
-                  <Icon className="w-8 h-8 text-gold" strokeWidth={2} />
-                </div>
-                <h3 className="text-sm font-bold text-text-strong">
+          <label htmlFor="use-case-select" className="block text-xs font-bold uppercase tracking-widest text-gold mb-3">
+            Select Use Case
+          </label>
+          <div className="relative">
+            <select
+              id="use-case-select"
+              value={activeIndex}
+              onChange={(e) => handleUseCaseClick(Number(e.target.value))}
+              className="w-full appearance-none bg-gold/10 border-2 border-gold/30 rounded-lg px-4 py-4 pr-12 text-base font-bold text-text-strong focus:outline-none focus:border-gold transition-colors"
+            >
+              {useCases.map((useCase, index) => (
+                <option key={useCase.id} value={index}>
                   {useCase.title}
-                </h3>
-              </div>
-            );
-          })}
+                </option>
+              ))}
+            </select>
+            <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+              <svg className="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+          </div>
         </motion.div>
 
+        {/* Split View Container */}
         <motion.div
           initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 12 }}
           whileInView={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.45, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.45, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          className="grid grid-cols-1 lg:grid-cols-[340px_1fr] gap-6 lg:gap-16"
         >
-          <a
-            href="/use-cases"
-            className="inline-flex items-center gap-2 text-base text-text-muted hover:text-gold transition-colors group"
+          {/* Left Sidebar - Use Case List (hidden on mobile) */}
+          <div className="hidden lg:block space-y-2 lg:sticky lg:top-24 lg:self-start">
+            {useCases.map((useCase, index) => {
+              const UseCaseIcon = useCase.icon;
+              const isActive = index === activeIndex;
+              
+              return (
+                <motion.button
+                  key={useCase.id}
+                  onClick={() => handleUseCaseClick(index)}
+                  whileHover={!isActive ? { x: 4 } : {}}
+                  transition={{ duration: 0.2 }}
+                  className={`
+                    w-full flex items-center gap-4 p-4 rounded-lg text-left transition-all duration-300
+                    ${isActive 
+                      ? 'bg-gold/10 border-l-4 border-gold shadow-sm' 
+                      : 'bg-background-light/50 border-l-4 border-transparent hover:bg-gold/5 hover:border-gold/40'
+                    }
+                  `}
+                >
+                  <div className={`
+                    flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-lg transition-all duration-300
+                    ${isActive ? 'bg-gold/20' : 'bg-gold/10'}
+                  `}>
+                    <UseCaseIcon className="w-5 h-5 text-gold" strokeWidth={2.5} />
+                  </div>
+                  <h3 className={`
+                    text-sm font-bold transition-colors duration-300 leading-tight
+                    ${isActive ? 'text-text-strong' : 'text-text-muted'}
+                  `}>
+                    {useCase.title}
+                  </h3>
+                </motion.button>
+              );
+            })}
+          </div>
+
+          {/* Right Content Area */}
+          <motion.div
+            key={activeIndex}
+            initial={shouldReduceMotion ? {} : { opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={shouldReduceMotion ? {} : { opacity: 0, x: -20 }}
+            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            className="space-y-8 lg:space-y-10"
           >
-            <span>Explore all use cases</span>
-            <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
-          </a>
+            {/* Header */}
+            <div className="space-y-4">
+              <div className="flex items-center gap-4">
+                <div className="flex items-center justify-center w-14 h-14 rounded-xl bg-gold/10">
+                  <Icon className="w-7 h-7 text-gold" strokeWidth={2} />
+                </div>
+                <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-text-strong leading-tight">
+                  {activeCase.title}
+                </h3>
+              </div>
+            </div>
+
+            {/* Problem */}
+            <div className="space-y-4 pb-6 border-b border-text-soft/20">
+              <h4 className="text-xs font-bold uppercase tracking-widest text-gold">The Problem</h4>
+              <p className="text-base md:text-lg leading-relaxed text-text-muted">
+                {activeCase.problem}
+              </p>
+            </div>
+
+            {/* What AI Does */}
+            <div className="space-y-4">
+              <h4 className="text-xs font-bold uppercase tracking-widest text-gold">What AI Does</h4>
+              <ul className="space-y-3.5">
+                {activeCase.whatAiDoes.map((item, idx) => (
+                  <motion.li
+                    key={idx}
+                    initial={shouldReduceMotion ? {} : { opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.3, delay: idx * 0.05 }}
+                    className="flex items-start gap-3 text-sm md:text-base text-text-muted leading-relaxed"
+                  >
+                    <div className="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-gold mt-2.5" />
+                    <span>{item}</span>
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Business Impact */}
+            <div className="space-y-4">
+              <h4 className="text-xs font-bold uppercase tracking-widest text-gold">Business Impact</h4>
+              <ul className="space-y-3.5">
+                {activeCase.businessImpact.map((item, idx) => (
+                  <motion.li
+                    key={idx}
+                    initial={shouldReduceMotion ? {} : { opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.3, delay: idx * 0.05 }}
+                    className="flex items-start gap-3 text-sm md:text-base text-text-muted leading-relaxed"
+                  >
+                    <div className="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-gold mt-2.5" />
+                    <span>{item}</span>
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Proof Point */}
+            <motion.div
+              initial={shouldReduceMotion ? {} : { opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.2 }}
+              className="border-l-4 border-gold bg-gold/5 pl-6 pr-6 py-6 rounded-r-lg"
+            >
+              <p className="text-sm md:text-base leading-relaxed text-text-muted">
+                <span className="font-bold text-gold uppercase tracking-wider text-xs">Proof: </span>
+                <span className="block mt-2">{activeCase.proofPoint}</span>
+              </p>
+            </motion.div>
+          </motion.div>
         </motion.div>
       </div>
     </section>
