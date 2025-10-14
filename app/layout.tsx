@@ -17,10 +17,10 @@ const dmSerif = DM_Serif_Display({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://arcanaadvisors.com'),
-  title: "Arcana Advisors — AI for Regulated Finance",
+  title: "Arcana Advisors — AI Expertise for Financial Services",
   description: "Custom agents, bank-grade evals, and compliant workflows—shipped fast, governed well.",
   openGraph: {
-    title: "Arcana Advisors — AI for Regulated Finance",
+    title: "Arcana Advisors — AI Expertise for Financial Services",
     description: "Custom agents, bank-grade evals, and compliant workflows—shipped fast, governed well.",
     type: "website",
     images: [
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Arcana Advisors — AI for Regulated Finance",
+    title: "Arcana Advisors — AI Expertise for Financial Services",
     description: "Custom agents, bank-grade evals, and compliant workflows—shipped fast, governed well.",
     images: ["/og.svg"],
   },
@@ -60,7 +60,7 @@ export default function RootLayout({
       },
       {
         "@type": "WebSite",
-        name: "Arcana Advisors — AI for Regulated Finance",
+        name: "Arcana Advisors — AI Expertise for Financial Services",
         url: "https://arcanaadvisors.com",
         potentialAction: {
           "@type": "ContactAction",
