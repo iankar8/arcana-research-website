@@ -1,0 +1,50 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1024" height="1024" fill="#000000"/>
+  
+  <g transform="translate(512, 280)">
+    <!-- Outer circle -->
+    <circle cx="0" cy="0" r="130" fill="none" stroke="#C17F4A" stroke-width="2"/>
+    
+    <!-- Middle circle -->
+    <circle cx="0" cy="0" r="115" fill="none" stroke="#C17F4A" stroke-width="2"/>
+    
+    <!-- Inner circle -->
+    <circle cx="0" cy="0" r="100" fill="none" stroke="#C17F4A" stroke-width="2"/>
+    
+    <!-- Crosshairs - Top -->
+    <line x1="0" y1="-145" x2="0" y2="-130" stroke="#C17F4A" stroke-width="2"/>
+    
+    <!-- Crosshairs - Bottom -->
+    <line x1="0" y1="130" x2="0" y2="145" stroke="#C17F4A" stroke-width="2"/>
+    
+    <!-- Crosshairs - Left -->
+    <line x1="-145" y1="0" x2="-130" y2="0" stroke="#C17F4A" stroke-width="2"/>
+    
+    <!-- Crosshairs - Right -->
+    <line x1="130" y1="0" x2="145" y2="0" stroke="#C17F4A" stroke-width="2"/>
+    
+    <!-- Horizontal line through A -->
+    <line x1="-100" y1="0" x2="100" y2="0" stroke="#C17F4A" stroke-width="2"/>
+    
+    <!-- Triangle A -->
+    <path d="M 0,-60 L -45,40 L -30,40 L 0,-20 L 30,40 L 45,40 Z" 
+          fill="none" stroke="#C17F4A" stroke-width="2"/>
+    
+    <!-- Inner triangle -->
+    <path d="M 0,-20 L -15,15 L 15,15 Z" 
+          fill="none" stroke="#C17F4A" stroke-width="2"/>
+  </g>
+  
+  <!-- Text: Arcana -->
+  <text x="512" y="580" font-family="Georgia, serif" font-size="120" font-style="italic" 
+        fill="#C17F4A" text-anchor="middle">Arcana</text>
+  
+  <!-- Text: ADVISORS -->
+  <text x="512" y="680" font-family="Arial, sans-serif" font-size="80" font-weight="bold" 
+        fill="#C17F4A" text-anchor="middle" letter-spacing="8">ADVISORS</text>
+  
+  <!-- Diamond star in bottom right -->
+  <g transform="translate(950, 950) rotate(45)">
+    <rect x="-15" y="-15" width="30" height="30" fill="#C17F4A"/>
+  </g>
+</svg>
