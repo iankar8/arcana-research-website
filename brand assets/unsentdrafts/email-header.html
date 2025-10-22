@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        }
+        .email-header {
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1a2e 100%);
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 3px solid #00D9FF;
+        }
+        .logo-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .logo-container img {
+            max-width: 400px;
+            height: auto;
+        }
+        .tagline {
+            color: #00D9FF;
+            font-size: 16px;
+            margin-top: 20px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+        .issue-number {
+            color: #FF3B9A;
+            font-size: 14px;
+            margin-top: 10px;
+            font-weight: 600;
+        }
+        
+        /* Responsive */
+        @media only screen and (max-width: 600px) {
+            .email-header {
+                padding: 30px 15px;
+            }
+            .logo-container img {
+                max-width: 300px;
+            }
+            .tagline {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-header">
+        <div class="logo-container">
+            <!-- Replace with your hosted logo URL -->
+            <img src="logo-horizontal.svg" alt="Unsent Drafts Newsletter" />
+            <div class="tagline">Thoughts Worth Sending</div>
+            <div class="issue-number">Issue #1 • [Date]</div>
+        </div>
+    </div>
+</body>
+</html>

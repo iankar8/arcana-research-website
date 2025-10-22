@@ -1,0 +1,83 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradient for background -->
+    <radialGradient id="bgGradient" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#1a2332;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0a0e1a;stop-opacity:1" />
+    </radialGradient>
+    
+    <!-- Glow filters -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <filter id="strongGlow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Gradient for cyan glow -->
+    <radialGradient id="cyanGlow">
+      <stop offset="0%" style="stop-color:#00D9FF;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#00D9FF;stop-opacity:0" />
+    </radialGradient>
+    
+    <!-- Gradient for pink glow -->
+    <radialGradient id="pinkGlow">
+      <stop offset="0%" style="stop-color:#FF3B9A;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#FF3B9A;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="256" height="256" fill="url(#bgGradient)"/>
+  
+  <!-- Stars -->
+  <circle cx="30" cy="40" r="1" fill="#ffffff" opacity="0.7"/>
+  <circle cx="220" cy="50" r="1.2" fill="#ffffff" opacity="0.6"/>
+  <circle cx="50" cy="210" r="1" fill="#ffffff" opacity="0.5"/>
+  <circle cx="200" cy="200" r="1.3" fill="#ffffff" opacity="0.7"/>
+  
+  <!-- Bokeh effects -->
+  <ellipse cx="40" cy="50" rx="25" ry="12" fill="url(#cyanGlow)" opacity="0.4" filter="url(#strongGlow)"/>
+  <ellipse cx="210" cy="60" rx="20" ry="10" fill="#FF8C42" opacity="0.3" filter="url(#strongGlow)"/>
+  <ellipse cx="50" cy="200" rx="18" ry="9" fill="url(#pinkGlow)" opacity="0.35" filter="url(#strongGlow)"/>
+  
+  <!-- Envelope icon -->
+  <g transform="translate(38, 70)">
+    <!-- Shadow for depth -->
+    <g opacity="0.3" transform="translate(2, 2)">
+      <rect x="0" y="20" width="180" height="115" rx="15" fill="#000000"/>
+    </g>
+    
+    <!-- Envelope body with glow -->
+    <g filter="url(#glow)">
+      <rect x="0" y="20" width="180" height="115" rx="15" stroke="#00D9FF" stroke-width="5" fill="none"/>
+    </g>
+    
+    <!-- Envelope flap -->
+    <g filter="url(#glow)">
+      <path d="M 0 20 L 90 95 L 180 20" stroke="#00D9FF" stroke-width="5" fill="none" stroke-linejoin="round"/>
+      <line x1="0" y1="20" x2="90" y2="95" stroke="#00D9FF" stroke-width="5"/>
+      <line x1="180" y1="20" x2="90" y2="95" stroke="#00D9FF" stroke-width="5"/>
+    </g>
+    
+    <!-- Notification badge -->
+    <g filter="url(#strongGlow)">
+      <circle cx="192" cy="12" r="28" fill="#FF3B9A"/>
+      <circle cx="192" cy="12" r="28" fill="url(#pinkGlow)" opacity="0.5"/>
+    </g>
+    <text x="192" y="24" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#0a0e1a" text-anchor="middle">1</text>
+  </g>
+  
+  <!-- Atmospheric particles -->
+  <circle cx="70" cy="130" r="1.5" fill="#00D9FF" opacity="0.3" filter="url(#glow)"/>
+  <circle cx="190" cy="150" r="1.2" fill="#FF3B9A" opacity="0.25" filter="url(#glow)"/>
+</svg>

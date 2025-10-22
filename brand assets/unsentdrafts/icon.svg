@@ -1,0 +1,16 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Envelope icon only -->
+  <g transform="translate(25, 50)">
+    <!-- Envelope body -->
+    <rect x="0" y="15" width="150" height="100" rx="12" stroke="#00D9FF" stroke-width="5" fill="none"/>
+    
+    <!-- Envelope flap -->
+    <path d="M 0 15 L 75 75 L 150 15" stroke="#00D9FF" stroke-width="5" fill="none" stroke-linejoin="round"/>
+    <line x1="0" y1="15" x2="75" y2="75" stroke="#00D9FF" stroke-width="5"/>
+    <line x1="150" y1="15" x2="75" y2="75" stroke="#00D9FF" stroke-width="5"/>
+    
+    <!-- Notification badge -->
+    <circle cx="160" cy="10" r="25" fill="#FF3B9A"/>
+    <text x="160" y="20" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#1a1a2e" text-anchor="middle">1</text>
+  </g>
+</svg>

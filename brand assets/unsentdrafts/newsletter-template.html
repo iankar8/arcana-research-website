@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unsent Drafts - A Newsletter From Ian Kar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f5f5f5;
+            line-height: 1.6;
+        }
+        .email-wrapper {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+        }
+        
+        /* HEADER STYLES */
+        .email-header {
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1a2e 100%);
+            padding: 50px 30px;
+            text-align: center;
+            border-bottom: 3px solid #00D9FF;
+            position: relative;
+        }
+        .logo-container {
+            margin-bottom: 25px;
+        }
+        .logo-container img {
+            max-width: 350px;
+            height: auto;
+        }
+        .newsletter-title {
+            color: #00D9FF;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .newsletter-subtitle {
+            color: #a0a0a0;
+            font-size: 16px;
+            margin-bottom: 5px;
+            font-weight: 400;
+        }
+        .author-name {
+            color: #FF3B9A;
+            font-weight: 600;
+        }
+        .issue-info {
+            color: #808080;
+            font-size: 14px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(0, 217, 255, 0.2);
+        }
+        
+        /* CONTENT STYLES */
+        .email-content {
+            padding: 40px 35px;
+            color: #333333;
+        }
+        .email-content h1 {
+            color: #1a1a2e;
+            font-size: 32px;
+            margin-bottom: 20px;
+            line-height: 1.3;
+            font-weight: 700;
+        }
+        .email-content h2 {
+            color: #00D9FF;
+            font-size: 24px;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .email-content h3 {
+            color: #1a1a2e;
+            font-size: 20px;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        .email-content p {
+            margin-bottom: 16px;
+            font-size: 16px;
+            color: #444444;
+            line-height: 1.7;
+        }
+        .email-content a {
+            color: #00D9FF;
+            text-decoration: none;
+            border-bottom: 1px solid #00D9FF;
+            transition: all 0.2s ease;
+        }
+        .email-content a:hover {
+            color: #FF3B9A;
+            border-bottom-color: #FF3B9A;
+        }
+        .email-content ul, .email-content ol {
+            margin-left: 25px;
+            margin-bottom: 20px;
+        }
+        .email-content li {
+            margin-bottom: 10px;
+            color: #444444;
+        }
+        .highlight-box {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-left: 4px solid #00D9FF;
+            padding: 20px 25px;
+            margin: 30px 0;
+            border-radius: 4px;
+        }
+        .highlight-box p {
+            margin-bottom: 0;
+        }
+        .quote-box {
+            background: #f8f8f8;
+            border-left: 4px solid #FF3B9A;
+            padding: 20px 25px;
+            margin: 30px 0;
+            font-style: italic;
+            color: #555555;
+        }
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #00D9FF 0%, #00b8d4 100%);
+            color: #ffffff !important;
+            padding: 14px 32px;
+            text-decoration: none !important;
+            border: none !important;
+            border-radius: 6px;
+            font-weight: 600;
+            margin: 25px 0;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 217, 255, 0.3);
+        }
+        .signature {
+            margin-top: 40px;
+            padding-top: 25px;
+            border-top: 1px solid #e0e0e0;
+        }
+        .signature-name {
+            font-weight: 600;
+            color: #1a1a2e;
+            font-size: 18px;
+        }
+        
+        /* FOOTER STYLES */
+        .email-footer {
+            background: linear-gradient(135deg, #1a1a2e 0%, #0a0e27 100%);
+            padding: 45px 30px;
+            text-align: center;
+            border-top: 3px solid #00D9FF;
+            color: #a0a0a0;
+        }
+        .footer-logo {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+        }
+        .footer-logo img {
+            width: 100%;
+            height: auto;
+        }
+        .footer-title {
+            color: #00D9FF;
+            font-size: 16px;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+        .footer-tagline {
+            color: #808080;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+        .social-links {
+            margin: 30px 0;
+        }
+        .social-links a {
+            display: inline-block;
+            margin: 0 15px;
+            color: #00D9FF;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .social-links a:hover {
+            color: #FF3B9A;
+        }
+        .divider {
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00D9FF, transparent);
+            margin: 30px auto;
+        }
+        .footer-text {
+            font-size: 13px;
+            line-height: 1.6;
+            color: #808080;
+            margin: 15px 0;
+        }
+        .footer-links {
+            margin-top: 25px;
+        }
+        .footer-links a {
+            color: #606060;
+            text-decoration: underline;
+            font-size: 12px;
+            margin: 0 10px;
+        }
+        .footer-links a:hover {
+            color: #00D9FF;
+        }
+        .copyright {
+            font-size: 12px;
+            color: #606060;
+            margin-top: 25px;
+        }
+        
+        /* RESPONSIVE */
+        @media only screen and (max-width: 600px) {
+            .email-header {
+                padding: 35px 20px;
+            }
+            .logo-container img {
+                max-width: 280px;
+            }
+            .newsletter-title {
+                font-size: 24px;
+            }
+            .newsletter-subtitle {
+                font-size: 14px;
+            }
+            .email-content {
+                padding: 30px 20px;
+            }
+            .email-content h1 {
+                font-size: 26px;
+            }
+            .email-content h2 {
+                font-size: 22px;
+            }
+            .email-footer {
+                padding: 35px 20px;
+            }
+            .social-links a {
+                display: block;
+                margin: 12px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-wrapper">
+        
+        <!-- HEADER -->
+        <div class="email-header">
+            <div class="logo-container">
+                <img src="logo-horizontal-enhanced.svg" alt="Unsent Drafts" />
+            </div>
+            <div class="newsletter-title">Unsent Drafts</div>
+            <div class="newsletter-subtitle">A Newsletter From <span class="author-name">Ian Kar</span></div>
+            <div class="issue-info">Issue #1 • January 16, 2025</div>
+        </div>
+        
+        <!-- CONTENT -->
+        <div class="email-content">
+            <h1>Welcome to Unsent Drafts</h1>
+            
+            <p>Hey there,</p>
+            
+            <p>Welcome to the first issue of <strong>Unsent Drafts</strong>—a newsletter where I share the thoughts, ideas, and stories that have been sitting in my drafts folder, finally ready to see the light of day.</p>
+            
+            <p>I'm Ian Kar, and I've spent years writing about technology, startups, and the future. But some of my best thinking never made it past the draft stage. Until now.</p>
+            
+            <div class="highlight-box">
+                <p><strong>💡 This week's insight:</strong> The best ideas often come from the drafts we're afraid to send. This newsletter is about changing that.</p>
+            </div>
+            
+            <h2>What I've Been Thinking About</h2>
+            
+            <p>This week, I've been reflecting on the power of unfinished work. We live in a world that celebrates the polished, the published, the perfect. But what about all those half-formed thoughts that never quite made it?</p>
+            
+            <p>Those drafts aren't failures—they're raw material. They're the seeds of something bigger. And sometimes, the act of sharing them, imperfect as they are, is exactly what they need to grow.</p>
+            
+            <h3>The Draft Paradox</h3>
+            
+            <p>Here's the thing about drafts: the longer they sit, the harder they are to send. We overthink them. We polish them until they lose their edge. We wait for the "perfect moment" that never comes.</p>
+            
+            <p>But what if we just... sent them?</p>
+            
+            <div class="quote-box">
+                <p>"Done is better than perfect. But shared is better than done."</p>
+            </div>
+            
+            <h2>Worth Reading</h2>
+            
+            <p>Here are a few things that caught my attention this week:</p>
+            
+            <ul>
+                <li><a href="#">The Art of the Unfinished</a> - A fascinating look at creative process and iteration</li>
+                <li><a href="#">Why Your Best Ideas Are Still in Draft</a> - On the psychology of perfectionism</li>
+                <li><a href="#">The Power of Publishing Imperfectly</a> - How constraints breed creativity</li>
+            </ul>
+            
+            <h2>One More Thing</h2>
+            
+            <p>I'd love to hear from you. What's sitting in your drafts folder? What ideas are you holding back? Hit reply and let me know—I read every response.</p>
+            
+            <p style="text-align: center;">
+                <a href="#" class="cta-button">Read More on My Blog</a>
+            </p>
+            
+            <div class="signature">
+                <p>Until next time,</p>
+                <p class="signature-name">Ian Kar</p>
+            </div>
+        </div>
+        
+        <!-- FOOTER -->
+        <div class="email-footer">
+            <div class="footer-logo">
+                <img src="icon-enhanced.svg" alt="Unsent Drafts" />
+            </div>
+            
+            <div class="footer-title">UNSENT DRAFTS</div>
+            <div class="footer-tagline">A Newsletter From Ian Kar</div>
+            
+            <div class="social-links">
+                <a href="https://twitter.com/iankar">Twitter</a>
+                <a href="https://linkedin.com/in/iankar">LinkedIn</a>
+                <a href="https://iankar.com">Website</a>
+                <a href="mailto:ian@example.com">Email</a>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <div class="footer-text">
+                Thanks for reading! If you enjoyed this issue, please share it with someone who might appreciate it.
+            </div>
+            
+            <div class="footer-text">
+                You're receiving this because you subscribed to Unsent Drafts. I respect your inbox and will never spam you.
+            </div>
+            
+            <div class="footer-links">
+                <a href="[UNSUBSCRIBE_LINK]">Unsubscribe</a>
+                <a href="[UPDATE_PREFERENCES_LINK]">Update Preferences</a>
+                <a href="[VIEW_ONLINE_LINK]">View in Browser</a>
+            </div>
+            
+            <div class="copyright">
+                © 2025 Ian Kar. All rights reserved.
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>

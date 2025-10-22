@@ -1,0 +1,32 @@
+<svg width="800" height="800" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background rounded square -->
+  <rect x="100" y="100" width="600" height="600" rx="80" stroke="#00D9FF" stroke-width="4" fill="none"/>
+  
+  <!-- Envelope icon -->
+  <g transform="translate(200, 180)">
+    <!-- Envelope body -->
+    <rect x="0" y="60" width="400" height="260" rx="20" stroke="#00D9FF" stroke-width="6" fill="none"/>
+    
+    <!-- Envelope flap lines -->
+    <path d="M 0 60 L 200 200 L 400 60" stroke="#00D9FF" stroke-width="6" fill="none" stroke-linejoin="round"/>
+    <line x1="0" y1="60" x2="200" y2="200" stroke="#00D9FF" stroke-width="6"/>
+    <line x1="400" y1="60" x2="200" y2="200" stroke="#00D9FF" stroke-width="6"/>
+    
+    <!-- Notification badge -->
+    <circle cx="420" cy="40" r="45" fill="#FF3B9A"/>
+    <text x="420" y="60" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="#1a1a2e" text-anchor="middle">1</text>
+  </g>
+  
+  <!-- Decorative lines -->
+  <line x1="120" y1="380" x2="180" y2="380" stroke="#00D9FF" stroke-width="4"/>
+  <line x1="120" y1="420" x2="180" y2="420" stroke="#00D9FF" stroke-width="4"/>
+  <line x1="120" y1="460" x2="180" y2="460" stroke="#00D9FF" stroke-width="4"/>
+  
+  <line x1="620" y1="380" x2="680" y2="380" stroke="#00D9FF" stroke-width="4"/>
+  
+  <!-- Text: UNSENT -->
+  <text x="400" y="540" font-family="Arial, sans-serif" font-size="80" font-weight="bold" fill="none" stroke="#00D9FF" stroke-width="2" text-anchor="middle" letter-spacing="8">UNSENT</text>
+  
+  <!-- Text: DRAFTS -->
+  <text x="400" y="630" font-family="Arial, sans-serif" font-size="80" font-weight="bold" fill="none" stroke="#00D9FF" stroke-width="2" text-anchor="middle" letter-spacing="8">DRAFTS</text>
+</svg>
