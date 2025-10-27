@@ -1,18 +1,20 @@
 # AI Demos Setup Guide
 
 ## Overview
-The AI Demos page (`/ai-demos`) showcases voice cloning technology for banking executives. This guide covers setup, API integration, and deployment.
+The AI Demos page (`/ai-demos`) showcases voice cloning technology using **Sesame CSM-1B** via Hugging Face for banking executives. This guide covers setup, API integration, and deployment.
 
 ---
 
 ## 🚀 Quick Start
 
-The demo is **already functional** with simulated responses. To enable real voice cloning:
+The demo is **already functional** with simulated responses. To enable real voice cloning with Sesame CSM:
 
-1. Get a Sesame API key (or alternative voice cloning provider)
-2. Add API key to environment variables
-3. Uncomment the API integration code
-4. Test and deploy
+1. Get Hugging Face API token: https://huggingface.co/settings/tokens
+2. Accept model access: https://huggingface.co/sesame/csm-1b
+3. Add `HUGGINGFACE_API_TOKEN` to `.env.local`
+4. Restart dev server and test
+
+**📖 See [HUGGINGFACE_SESAME_SETUP.md](./HUGGINGFACE_SESAME_SETUP.md) for detailed Sesame integration guide.**
 
 ---
 

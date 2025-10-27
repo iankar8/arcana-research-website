@@ -96,17 +96,49 @@ across the country.`;
     setError(null);
 
     try {
-      // TODO: Replace with actual Sesame API call
-      // For now, simulate API call with delay
-      await new Promise(resolve => setTimeout(resolve, 3000));
+      // Create form data with audio and text
+      const formData = new FormData();
+      formData.append("audio", audioBlob, "recording.webm");
+      formData.append("text", sampleScript);
 
-      // Simulate cloned audio (in production, this would be the Sesame API response)
-      // For demo purposes, we'll use the original recording
-      setClonedAudioUrl(audioUrl);
+      // Call the voice cloning API
+      const response = await fetch("/api/voice-clone", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        
+        // Handle model loading state
+        if (errorData.isLoading) {
+          setError("Model is warming up. Please wait 20-30 seconds and try again.");
+          setStage("processing");
+          return;
+        }
+        
+        throw new Error(errorData.error || "Failed to generate voice clone");
+      }
+
+      // Check if response is JSON (simulation) or audio
+      const contentType = response.headers.get("content-type");
+      
+      if (contentType?.includes("application/json")) {
+        // Simulated response - use original audio
+        const data = await response.json();
+        console.log(data.message);
+        setClonedAudioUrl(audioUrl);
+      } else if (contentType?.includes("audio")) {
+        // Real cloned audio
+        const audioBlob = await response.blob();
+        const url = URL.createObjectURL(audioBlob);
+        setClonedAudioUrl(url);
+      }
+
       setStage("complete");
       onComplete();
     } catch (err) {
-      setError("Failed to generate voice clone. Please try again.");
+      setError(err instanceof Error ? err.message : "Failed to generate voice clone. Please try again.");
       setStage("processing");
       console.error("Error generating clone:", err);
     }
